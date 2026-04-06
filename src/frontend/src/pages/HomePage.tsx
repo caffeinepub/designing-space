@@ -314,7 +314,7 @@ function StarterPacksSection() {
           </p>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2 items-stretch">
           {packs.map((pack, i) => (
             <motion.div
               key={pack.title}
@@ -322,7 +322,7 @@ function StarterPacksSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="overflow-hidden rounded-2xl bg-card shadow-card"
+              className="overflow-hidden rounded-2xl bg-card shadow-card flex flex-col h-full"
               data-ocid={pack.ocid}
             >
               {pack.image && (
@@ -340,11 +340,11 @@ function StarterPacksSection() {
                   </span>
                 </div>
               )}
-              <div className="p-6">
-                <h3 className="font-display mb-2 text-xl font-bold text-primary">
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="font-display text-2xl md:text-3xl font-bold leading-tight tracking-tight text-primary mb-3">
                   {pack.title}
                 </h3>
-                <div className="mb-4">
+                <div className="mb-4 flex-1">
                   <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                     Includes:
                   </p>
@@ -360,7 +360,7 @@ function StarterPacksSection() {
                     ))}
                   </ul>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mt-auto pt-2">
                   <div>
                     <span className="text-3xl font-bold text-accent">
                       {pack.price}
