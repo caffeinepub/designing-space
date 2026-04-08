@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import type { Inquiry } from "../backend";
 import { useActor } from "./useActor";
 
+export type { Inquiry };
+
 export function useInquiries() {
   const { actor, isFetching: actorFetching } = useActor();
 
