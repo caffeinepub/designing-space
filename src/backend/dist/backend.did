@@ -1,0 +1,15 @@
+type Enquiry = 
+ record {
+   company: text;
+   email: text;
+   message: text;
+   name: text;
+   phone: text;
+   productInterest: text;
+   quantity: text;
+   timestamp: int;
+ };
+service : {
+  addEnquiry: (enquiry: Enquiry) -> (text);
+  getEnquiries: () -> (vec Enquiry) query;
+}

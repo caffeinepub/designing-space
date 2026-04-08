@@ -8,107 +8,39 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
-export const UserRole = IDL.Variant({
-  'admin' : IDL.Null,
-  'user' : IDL.Null,
-  'guest' : IDL.Null,
-});
-export const Time = IDL.Int;
-export const Inquiry = IDL.Record({
+export const Enquiry = IDL.Record({
   'name' : IDL.Text,
   'email' : IDL.Text,
   'company' : IDL.Text,
   'message' : IDL.Text,
-  'timestamp' : Time,
+  'timestamp' : IDL.Int,
   'productInterest' : IDL.Text,
   'quantity' : IDL.Text,
-  'phone' : IDL.Opt(IDL.Text),
+  'phone' : IDL.Text,
 });
-export const UserProfile = IDL.Record({ 'name' : IDL.Text });
 
 export const idlService = IDL.Service({
-  '_initializeAccessControl' : IDL.Func([], [], []),
-  'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
-  'getAllInquiries' : IDL.Func(
-      [IDL.Null],
-      [IDL.Vec(IDL.Tuple(IDL.Text, Inquiry))],
-      ['query'],
-    ),
-  'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
-  'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
-  'getUserProfile' : IDL.Func(
-      [IDL.Principal],
-      [IDL.Opt(UserProfile)],
-      ['query'],
-    ),
-  'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
-  'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
-  'submitInquiry' : IDL.Func(
-      [
-        IDL.Text,
-        IDL.Text,
-        IDL.Text,
-        IDL.Opt(IDL.Text),
-        IDL.Text,
-        IDL.Text,
-        IDL.Text,
-      ],
-      [],
-      [],
-    ),
+  'addEnquiry' : IDL.Func([Enquiry], [IDL.Text], []),
+  'getEnquiries' : IDL.Func([], [IDL.Vec(Enquiry)], ['query']),
 });
 
 export const idlInitArgs = [];
 
 export const idlFactory = ({ IDL }) => {
-  const UserRole = IDL.Variant({
-    'admin' : IDL.Null,
-    'user' : IDL.Null,
-    'guest' : IDL.Null,
-  });
-  const Time = IDL.Int;
-  const Inquiry = IDL.Record({
+  const Enquiry = IDL.Record({
     'name' : IDL.Text,
     'email' : IDL.Text,
     'company' : IDL.Text,
     'message' : IDL.Text,
-    'timestamp' : Time,
+    'timestamp' : IDL.Int,
     'productInterest' : IDL.Text,
     'quantity' : IDL.Text,
-    'phone' : IDL.Opt(IDL.Text),
+    'phone' : IDL.Text,
   });
-  const UserProfile = IDL.Record({ 'name' : IDL.Text });
   
   return IDL.Service({
-    '_initializeAccessControl' : IDL.Func([], [], []),
-    'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
-    'getAllInquiries' : IDL.Func(
-        [IDL.Null],
-        [IDL.Vec(IDL.Tuple(IDL.Text, Inquiry))],
-        ['query'],
-      ),
-    'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
-    'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
-    'getUserProfile' : IDL.Func(
-        [IDL.Principal],
-        [IDL.Opt(UserProfile)],
-        ['query'],
-      ),
-    'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
-    'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
-    'submitInquiry' : IDL.Func(
-        [
-          IDL.Text,
-          IDL.Text,
-          IDL.Text,
-          IDL.Opt(IDL.Text),
-          IDL.Text,
-          IDL.Text,
-          IDL.Text,
-        ],
-        [],
-        [],
-      ),
+    'addEnquiry' : IDL.Func([Enquiry], [IDL.Text], []),
+    'getEnquiries' : IDL.Func([], [IDL.Vec(Enquiry)], ['query']),
   });
 };
 

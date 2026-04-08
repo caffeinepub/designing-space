@@ -1,0 +1,26 @@
+{
+  "overview": "OfNeeds is a modern B2B ecommerce website for a corporate gifting company, featuring employee welcome kits, customized merchandise (T-shirts, jackets, caps, sipper bottles, trophies, notebooks, eco-friendly products), and SEO-optimized landing pages targeting HR teams, procurement heads, and event organizers across India.",
+  "features": [
+    "Corporate gifting product catalog with Welcome Kits, Apparel, Accessories, Eco-Friendly, and Trophies categories",
+    "Ready-to-ship starter packs — ₹599 Essential and ₹1199 Premium employee welcome kits",
+    "Bulk order enquiry form saved to backend",
+    "13 SEO-optimized product landing pages with 800+ words each",
+    "3 blog articles targeting long-tail keywords",
+    "Trusted by Global Leaders section with 6 client logos",
+    "Full schema markup (LocalBusiness, FAQPage, Product, BreadcrumbList)",
+    "Sitemap.xml and robots.txt for Google indexing",
+    "Fully responsive mobile-first layout with Playfair Display headings"
+  ],
+  "category": "ecommerce",
+  "tags": [
+    "corporate-gifting",
+    "b2b",
+    "ecommerce",
+    "india",
+    "bangalore",
+    "seo",
+    "welcome-kits",
+    "merchandise"
+  ],
+  "last_updated": "2026-04-08T11:51:15.703Z"
+}

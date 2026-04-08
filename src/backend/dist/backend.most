@@ -1,0 +1,22 @@
+// Version: 1.0.0
+type Enquiry__436551690 =
+  {
+    company : Text;
+    email : Text;
+    message : Text;
+    name : Text;
+    phone : Text;
+    productInterest : Text;
+    quantity : Text;
+    timestamp : Int
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+actor {
+  stable enquiries :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Enquiry__436551690]];
+      var elementIndex : Nat__490723111
+    }
+};
