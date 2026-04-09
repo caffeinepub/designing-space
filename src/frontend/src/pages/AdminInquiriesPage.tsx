@@ -9,6 +9,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { useActor } from "@caffeineai/core-infrastructure";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   Building,
@@ -20,11 +21,11 @@ import {
   Trash2,
 } from "lucide-react";
 import { useState } from "react";
-import { useActor } from "../hooks/useActor";
+import { createActor } from "../backend";
 import { useInquiries } from "../hooks/useInquiries";
 
 function useDeleteInquiry() {
-  const { actor } = useActor();
+  const { actor } = useActor(createActor);
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (_id: string) => {

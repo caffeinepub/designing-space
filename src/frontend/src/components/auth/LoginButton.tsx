@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { useInternetIdentity } from "@caffeineai/core-infrastructure";
 import { useQueryClient } from "@tanstack/react-query";
 import { Loader2, LogIn, LogOut } from "lucide-react";
-import { useInternetIdentity } from "../../hooks/useInternetIdentity";
 
 export default function LoginButton() {
   const { login, clear, loginStatus, identity } = useInternetIdentity();
@@ -17,9 +17,12 @@ export default function LoginButton() {
     } else {
       try {
         await login();
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error("Login error:", error);
-        if (error.message === "User is already authenticated") {
+        if (
+          error instanceof Error &&
+          error.message === "User is already authenticated"
+        ) {
           await clear();
           setTimeout(() => login(), 300);
         }

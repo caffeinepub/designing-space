@@ -7,17 +7,32 @@ export interface None {
     __kind__: "None";
 }
 export type Option<T> = Some<T> | None;
-export interface Enquiry {
+export type Time = bigint;
+export interface Inquiry {
     name: string;
     email: string;
     company: string;
     message: string;
-    timestamp: bigint;
+    timestamp: Time;
     productInterest: string;
     quantity: string;
-    phone: string;
+    phone?: string;
+}
+export interface UserProfile {
+    name: string;
+}
+export enum UserRole {
+    admin = "admin",
+    user = "user",
+    guest = "guest"
 }
 export interface backendInterface {
-    addEnquiry(enquiry: Enquiry): Promise<string>;
-    getEnquiries(): Promise<Array<Enquiry>>;
+    assignCallerUserRole(user: Principal, role: UserRole): Promise<void>;
+    getAllInquiries(arg0: null): Promise<Array<[string, Inquiry]>>;
+    getCallerUserProfile(): Promise<UserProfile | null>;
+    getCallerUserRole(): Promise<UserRole>;
+    getUserProfile(user: Principal): Promise<UserProfile | null>;
+    isCallerAdmin(): Promise<boolean>;
+    saveCallerUserProfile(profile: UserProfile): Promise<void>;
+    submitInquiry(name: string, company: string, email: string, phone: string | null, productInterest: string, quantity: string, message: string): Promise<void>;
 }

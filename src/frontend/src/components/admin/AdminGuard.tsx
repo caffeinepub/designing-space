@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { useInternetIdentity } from "@caffeineai/core-infrastructure";
 import { Loader2, ShieldAlert } from "lucide-react";
 import type { ReactNode } from "react";
 import { useAdminStatus } from "../../hooks/useAdminStatus";
-import { useInternetIdentity } from "../../hooks/useInternetIdentity";
 
 interface AdminGuardProps {
   children: ReactNode;

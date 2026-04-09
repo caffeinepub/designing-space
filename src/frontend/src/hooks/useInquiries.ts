@@ -1,17 +1,30 @@
+import { useActor } from "@caffeineai/core-infrastructure";
 import { useQuery } from "@tanstack/react-query";
-import type { Inquiry } from "../backend";
-import { useActor } from "./useActor";
+import { createActor } from "../backend";
 
-export type { Inquiry };
+export interface Inquiry {
+  name: string;
+  company: string;
+  email: string;
+  phone: [] | [string];
+  productInterest: string;
+  quantity: string;
+  message: string;
+  timestamp: bigint;
+}
+
+interface ActorWithInquiries {
+  getAllInquiries: (arg: null) => Promise<Array<[string, Inquiry]>>;
+}
 
 export function useInquiries() {
-  const { actor, isFetching: actorFetching } = useActor();
+  const { actor, isFetching: actorFetching } = useActor(createActor);
 
   return useQuery<Array<[string, Inquiry]>>({
     queryKey: ["inquiries"],
     queryFn: async () => {
       if (!actor) throw new Error("Actor not available");
-      return actor.getAllInquiries(null);
+      return (actor as unknown as ActorWithInquiries).getAllInquiries(null);
     },
     enabled: !!actor && !actorFetching,
   });
