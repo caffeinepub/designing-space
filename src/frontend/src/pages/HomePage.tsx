@@ -224,7 +224,7 @@ function HeroSection() {
               {[
                 { value: "500+", label: "Companies" },
                 { value: "1L+", label: "Kits Delivered" },
-                { value: "50+", label: "Products" },
+                { value: "50+", label: "Clients" },
               ].map((s) => (
                 <div key={s.label}>
                   <div className="text-2xl font-bold text-primary">
@@ -625,7 +625,7 @@ function AboutSection() {
     { value: "500+", label: "Corporate Clients" },
     { value: "1L+", label: "Kits Delivered" },
     { value: "8+", label: "Years Experience" },
-    { value: "50+", label: "Products" },
+    { value: "50+", label: "Clients" },
   ];
 
   return (
